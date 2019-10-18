@@ -1,14 +1,21 @@
 *.iml
 .gradle
 /local.properties
-/.idea/caches
-/.idea/libraries
-/.idea/modules.xml
 /.idea/workspace.xml
-/.idea/navEditor.xml
-/.idea/assetWizardSettings.xml
+/.idea/libraries
+/.idea/misc.xml
+/.idea/modules.xml
 .DS_Store
 /build
 /captures
 .externalNativeBuild
-.cxx
+
+
+.idea/
+# Intellij IDEA (see https://intellij-support.jetbrains.com/entries/23393067)
+.idea/workspace.xml
+.idea/tasks.xml
+#In IDEA 13 及早期版本中，dataSources.ids, datasources.xml 可以包含数据库密码.IDEA 14 解决了这个问题.所以可以不加
+.idea/datasources.xml
+.idea/dataSources.ids
+*.iml
