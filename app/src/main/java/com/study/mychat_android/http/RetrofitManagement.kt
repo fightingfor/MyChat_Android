@@ -36,7 +36,7 @@ class RetrofitManagement private constructor() {
             .writeTimeout(WRITE_TIMEOUT, TimeUnit.MILLISECONDS)
             .connectTimeout(CONNECT_TIMEOUT, TimeUnit.MILLISECONDS)
             .retryOnConnectionFailure(true)
-            .addInterceptor(FilterInterceptor())
+//            .addInterceptor(FilterInterceptor()) todo暂时不用
 
         val httpLoggingInterceptor = HttpLoggingInterceptor()
         httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BODY

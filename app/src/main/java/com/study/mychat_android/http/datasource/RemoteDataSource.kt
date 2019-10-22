@@ -7,6 +7,7 @@ import com.study.mychat_android.http.RequestCallback
 import com.study.mychat_android.http.api.ApiService
 import com.study.mychat_android.model.DistrictBean
 import com.study.mychat_android.model.ForecastsBean
+import com.study.mychat_android.model.LoginModel
 import com.study.mychat_android.model.TestBean
 
 /**
@@ -40,5 +41,21 @@ class WeatherDataSource(baseViewModelEvent: IBaseViewModelEvent) : BaseRemoteDat
 class TestDataSource(baseViewModelEvent: IBaseViewModelEvent) : BaseRemoteDataSource(baseViewModelEvent) {
     fun getTestData(test: String, callback: RequestCallback<TestBean>) {
         execute(getService(ApiService::class.java, HttpConfig.BASE_URL_MAP).getTestInfo(test), callback)
+    }
+}
+/*------------------------------------------------------------------------------------------------------------------*/
+class LoginDataSource(baseViewModelEvent: IBaseViewModelEvent) : BaseRemoteDataSource(baseViewModelEvent){
+    fun login(phone:String,password:String,callback: RequestCallback<LoginModel>){
+        val map = mutableMapOf<String, String>()
+        map["mobile"] = phone
+        map["password"] = password
+        execute(getService(ApiService::class.java,HttpConfig.BASE_URL_MAP).login(map),callback)
+    }
+
+    fun regist(phone:String,password:String,callback: RequestCallback<LoginModel>){
+        val map = mutableMapOf<String, String>()
+        map["mobile"] = phone
+        map["password"] = password
+        execute(getService(ApiService::class.java,HttpConfig.BASE_URL_MAP).regist(map),callback)
     }
 }

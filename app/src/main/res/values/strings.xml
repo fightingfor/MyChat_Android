@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">MyChat_Android</string>
+    <string name="phone_hint">phoneNumber</string>
+    <string name="password_hint">password</string>
+    <string name="login">LOGIN</string>
+    <string name="regist">regist</string>
 </resources>

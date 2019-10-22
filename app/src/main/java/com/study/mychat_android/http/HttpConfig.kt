@@ -8,7 +8,7 @@ class HttpConfig {
 
     companion object {
 
-        const val BASE_URL_MAP = "https://restapi.amap.com/v3/"
+        const val BASE_URL_MAP = "http://welzzstudy.com:8081"
 
         const val HTTP_REQUEST_TYPE_KEY = "requestType"
 
@@ -18,7 +18,7 @@ class HttpConfig {
 
         const val CODE_UNKNOWN = -1024
 
-        const val CODE_SUCCESS = 1
+        const val CODE_SUCCESS = 0
 
         const val CODE_CONNECTION_FAILED = -5
 
