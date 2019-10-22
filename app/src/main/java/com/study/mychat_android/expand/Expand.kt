@@ -18,7 +18,7 @@ import kotlinx.android.synthetic.main.layout_toast_view.view.*
  * Created by jinguang on 2019/10/18.
  */
 
-private fun toast(
+ fun toast(
     message: CharSequence, @DrawableRes drawableLeft: Int = 0, @DrawableRes drawableTop: Int = 0,
     @DrawableRes drawableRight: Int = 0, @DrawableRes drawableBottom: Int = 0, duration: Int = Toast.LENGTH_SHORT
 ) {

@@ -1,10 +1,7 @@
 package com.study.mychat_android.http.api
 
 import com.study.mychat_android.http.model.BaseResponse
-import com.study.mychat_android.model.DistrictBean
-import com.study.mychat_android.model.ForecastsBean
-import com.study.mychat_android.model.LoginModel
-import com.study.mychat_android.model.TestBean
+import com.study.mychat_android.model.*
 import io.reactivex.Observable
 import retrofit2.http.*
 
@@ -35,9 +32,18 @@ interface ApiService {
     @POST("api/registe")
     fun regist(@FieldMap map: Map<String, String>): Observable<BaseResponse<LoginModel>>
 
+    @FormUrlEncoded
+    @POST("api/addfriend")
+    fun addFriend(@FieldMap map: Map<String, String>): Observable<BaseResponse<ResponseModel>>
+
+    @FormUrlEncoded
+    @POST("api/loadfriends")
+    fun getContactList(@FieldMap map: Map<String, String>): Observable<BaseResponse<ArrayList<UserModel>>>
 
     @GET("test/test")
     fun getTestInfo(@Query("test") test: String): Observable<BaseResponse<TestBean>>
+
+
 
 
 }

@@ -1,7 +1,12 @@
 <resources>
-    <string name="app_name">MyChat_Android</string>
+    <string name="app_name">嗨！私聊</string>
     <string name="phone_hint">phoneNumber</string>
     <string name="password_hint">password</string>
     <string name="login">LOGIN</string>
     <string name="regist">regist</string>
+    <string name="chat">chat</string>
+    <string name="contact">contact</string>
+    <string name="personal">personal</string>
+    <string name="add_friends">添加联系人</string>
+
 </resources>

@@ -1,5 +1,6 @@
 package com.study.mychat_android.http
 
+import com.study.mychat_android.expand.toast
 import io.reactivex.observers.DisposableObserver
 import com.study.mychat_android.http.model.OptionT
 
@@ -24,8 +25,7 @@ class BaseSubscriber<T> constructor(private val requestCallback: RequestCallback
                 requestCallback.onFail(ServerResultException(msg))
             }
         } else {
-            //todo 添加toast提示
-//            ToastHolder.showToast(msg = msg)
+            toast(msg)
         }
     }
 

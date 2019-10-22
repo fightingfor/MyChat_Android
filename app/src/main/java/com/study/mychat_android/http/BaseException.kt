@@ -5,6 +5,9 @@ package com.study.mychat_android.http
  */
 
 sealed class BaseException(errorMessage: String, val code: Int = HttpConfig.CODE_UNKNOWN) :
-    RuntimeException(errorMessage)
+    RuntimeException(errorMessage){
+}
 
-class ServerResultException(message: String, code: Int = HttpConfig.CODE_UNKNOWN) : BaseException(message, code)
+class ServerResultException(message: String, code: Int = HttpConfig.CODE_UNKNOWN) : BaseException(message, code){
+
+}

@@ -1,14 +1,12 @@
 package com.study.mychat_android.http.datasource
 
+import com.study.mychat_android.expand.getToken
 import com.study.mychat_android.http.BaseRemoteDataSource
 import com.study.mychat_android.http.HttpConfig
 import com.study.mychat_android.http.IBaseViewModelEvent
 import com.study.mychat_android.http.RequestCallback
 import com.study.mychat_android.http.api.ApiService
-import com.study.mychat_android.model.DistrictBean
-import com.study.mychat_android.model.ForecastsBean
-import com.study.mychat_android.model.LoginModel
-import com.study.mychat_android.model.TestBean
+import com.study.mychat_android.model.*
 
 /**
  * Created by jinguang on 2019/10/18.
@@ -57,5 +55,22 @@ class LoginDataSource(baseViewModelEvent: IBaseViewModelEvent) : BaseRemoteDataS
         map["mobile"] = phone
         map["password"] = password
         execute(getService(ApiService::class.java,HttpConfig.BASE_URL_MAP).regist(map),callback)
+    }
+}
+
+class ContactDataSource(baseViewModelEvent: IBaseViewModelEvent):BaseRemoteDataSource(baseViewModelEvent){
+    fun addFriend(userid:String,dstid:String,callback: RequestCallback<ResponseModel>){
+        val map = mutableMapOf<String,String>()
+        map["userid"] = userid
+        map["dstid"] = dstid
+        map["token"] = getToken()
+        execute(getService(ApiService::class.java,HttpConfig.BASE_URL_MAP).addFriend(map),callback)
+    }
+
+    fun getContacts(userid: String,callback: RequestCallback<ArrayList<UserModel>>){
+        val map = mutableMapOf<String,String>()
+        map["userid"] = userid
+        map["token"] = getToken()
+        execute(getService(ApiService::class.java,HttpConfig.BASE_URL_MAP).getContactList(map),callback)
     }
 }

@@ -1,6 +1,7 @@
 package com.study.mychat_android.viewmodel
 
 import androidx.lifecycle.MutableLiveData
+import com.study.mychat_android.expand.saveAccount
 import com.study.mychat_android.http.RequestCallback
 import com.study.mychat_android.http.datasource.LoginDataSource
 import com.study.mychat_android.http.viewmodel.BaseViewModel
@@ -19,6 +20,7 @@ class LoginViewModel : BaseViewModel() {
         loginDataSource.login(phone,password,object :RequestCallback<LoginModel>{
             override fun onSuccess(data: LoginModel) {
                 loginLiveData.value = data
+                saveAccount(loginmodel = data)
             }
         })
 
@@ -28,6 +30,7 @@ class LoginViewModel : BaseViewModel() {
         loginDataSource.regist(phone,password,object :RequestCallback<LoginModel>{
             override fun onSuccess(data: LoginModel) {
                 registLiveData.value = data
+                saveAccount(loginmodel = data)
             }
         })
 

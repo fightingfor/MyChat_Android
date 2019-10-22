@@ -30,5 +30,9 @@ class SharedPrefKeyManager {
         const val KEY_DIALOG_IMEI_DONT_SHOW_AGAIN = "key_dialog_imei_dont_show_again"
 
         const val KEY_CACHE_FILE_PATH: String = "sd_file_path"
+
+
+        const val KEY_TOKEN = "key_token"
+        const val KEY_USER_ID = "key_user_id"
     }
 }
