@@ -1,4 +1,4 @@
-package com.study.mychat_android.home.contact
+package com.study.mychat_android.contact
 
 import android.content.Intent
 import android.os.Bundle
@@ -11,7 +11,7 @@ import com.study.mychat_android.MainApplication
 import com.study.mychat_android.R
 import com.study.mychat_android.expand.getUserId
 import com.study.mychat_android.expand.isEmpty
-import com.study.mychat_android.home.contact.contactdetail.ContactDetailActivity
+import com.study.mychat_android.chat.detail.ChatDetailActivity
 import com.study.mychat_android.http.viewmodel.BaseViewModel
 import com.study.mychat_android.model.UserModel
 import com.study.mychat_android.view.BaseFragment
@@ -62,8 +62,8 @@ class ContactListFragment : BaseFragment() {
         recycle_contact?.adapter = contactListAdapter
         contactListAdapter.setOnItemClickListener(object : ContactListAdapter.OnItemClickListener {
             override fun onItemClick(user: UserModel) {
-                val intent = Intent(activity!!, ContactDetailActivity::class.java)
-                intent.putExtra(ContactDetailActivity.KEY_USER, user)
+                val intent = Intent(activity!!, ChatDetailActivity::class.java)
+                intent.putExtra(ChatDetailActivity.KEY_USER, user)
                 startActivity(intent)
             }
 

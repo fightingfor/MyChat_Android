@@ -1,4 +1,4 @@
-package com.study.mychat_android.home.contact
+package com.study.mychat_android.contact
 
 import android.app.Dialog
 import android.content.Context

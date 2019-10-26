@@ -34,5 +34,6 @@ class SharedPrefKeyManager {
 
         const val KEY_TOKEN = "key_token"
         const val KEY_USER_ID = "key_user_id"
+        const val KEY_NICK_NAME = "key_nick_name"
     }
 }

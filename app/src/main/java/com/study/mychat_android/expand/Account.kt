@@ -12,7 +12,10 @@ import com.study.mychat_android.util.SharedPrefKeyManager
 fun saveAccount(loginmodel: LoginModel) {
     setToken(loginmodel.token)
     setUserId(loginmodel.id)
+    setNickname(loginmodel.nickname)
 }
+
+
 
 fun clearAccount() {
     setToken("")
@@ -30,6 +33,11 @@ fun getUserId(): String = SharedPref.getString(SharedPrefKeyManager.KEY_USER_ID,
 fun setUserId(userid: String) {
     SharedPref.setString(SharedPrefKeyManager.KEY_USER_ID, userid)
 }
+
+fun setNickname(nickname: String) {
+    SharedPref.setString(SharedPrefKeyManager.KEY_NICK_NAME, nickname)
+}
+fun getNickname() = SharedPref.getString(SharedPrefKeyManager.KEY_NICK_NAME, "")?:""
 
 fun isTokenValid(): Boolean {
     if (isEmpty(getToken())) {

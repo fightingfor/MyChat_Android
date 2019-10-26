@@ -1,4 +1,4 @@
-package com.study.mychat_android.home.contact
+package com.study.mychat_android.contact
 
 import android.view.LayoutInflater
 import android.view.View
@@ -15,7 +15,7 @@ class ContactListAdapter : RecyclerView.Adapter<ContactListAdapter.ContactListVi
     var listdata: ArrayList<UserModel> = arrayListOf()
     fun setData(list: ArrayList<UserModel>) {
         listdata.clear()
-        this.listdata = list
+        listdata.addAll(list)
         notifyDataSetChanged()
     }
 

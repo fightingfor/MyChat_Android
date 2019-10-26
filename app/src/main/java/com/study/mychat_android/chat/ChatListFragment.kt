@@ -1,4 +1,4 @@
-package com.study.mychat_android.home
+package com.study.mychat_android.chat
 
 import android.os.Bundle
 import android.view.LayoutInflater

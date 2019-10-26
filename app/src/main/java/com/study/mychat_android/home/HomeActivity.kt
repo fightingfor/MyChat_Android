@@ -4,7 +4,8 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentPagerAdapter
 import com.study.mychat_android.R
-import com.study.mychat_android.home.contact.ContactListFragment
+import com.study.mychat_android.chat.ChatListFragment
+import com.study.mychat_android.contact.ContactListFragment
 import com.study.mychat_android.view.BaseActivity
 import kotlinx.android.synthetic.main.activity_home.*
 
