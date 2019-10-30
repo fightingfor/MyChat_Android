@@ -8,7 +8,10 @@ class HttpConfig {
 
     companion object {
 
-        const val BASE_URL_MAP = "http://welzzstudy.com:8081"
+//        const val BASE_URL_MAP = "http://welzzstudy.com:8081"
+        const val BASE_URL_MAP = "http://10.249.202.88:8081"
+
+        const val WEB_SOCKET_URL = "ws://10.249.202.88:8081"
 
         const val HTTP_REQUEST_TYPE_KEY = "requestType"
 

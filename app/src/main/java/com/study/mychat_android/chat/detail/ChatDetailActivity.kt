@@ -8,6 +8,7 @@ import com.study.mychat_android.R
 import com.study.mychat_android.expand.getNickname
 import com.study.mychat_android.expand.getUserId
 import com.study.mychat_android.expand.isEmpty
+import com.study.mychat_android.http.HttpConfig
 import com.study.mychat_android.http.viewmodel.BaseViewModel
 import com.study.mychat_android.model.MessageModel
 import com.study.mychat_android.model.UserModel
@@ -35,7 +36,7 @@ class ChatDetailActivity : BaseActivity() {
         setContentView(R.layout.activity_contact_detail)
         targetUser = intent.getParcelableExtra(KEY_USER) as UserModel
         mySocket =
-            MySocket(URI("ws://10.249.203.132:8081/api/chat?ownerId=${getUserId()}&targetId=${targetUser.id}"))
+            MySocket(URI("${HttpConfig.WEB_SOCKET_URL}/api/chat?ownerId=${getUserId()}&targetId=${targetUser.id}"))
         mySocket.setCurrentAct(this)
         mySocket.connect()
         iniView()
@@ -54,6 +55,7 @@ class ChatDetailActivity : BaseActivity() {
                 )
             )
             adapter.setData(messageList)
+            recycle_contact_detail?.scrollToPosition(adapter.itemCount - 1)
         })
         return chatDetailViewModel
     }
@@ -61,6 +63,7 @@ class ChatDetailActivity : BaseActivity() {
     private fun iniView() {
         val linearLayoutManager = LinearLayoutManager(this)
         linearLayoutManager.orientation = LinearLayoutManager.VERTICAL
+        linearLayoutManager.stackFromEnd = true
         recycle_contact_detail?.layoutManager = linearLayoutManager
         recycle_contact_detail?.adapter = adapter
         adapter.setData(messageList)
@@ -82,6 +85,7 @@ class ChatDetailActivity : BaseActivity() {
             )
 
             adapter.setData(messageList)
+            recycle_contact_detail?.scrollToPosition(adapter.itemCount - 1)
             et_message?.setText("")
         }
     }

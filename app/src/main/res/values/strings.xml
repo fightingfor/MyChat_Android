@@ -8,5 +8,9 @@
     <string name="contact">contact</string>
     <string name="personal">personal</string>
     <string name="add_friends">添加联系人</string>
-
+    <string name="nickname">nickName</string>
+    <string name="input_phone">请输入好友的手机号</string>
+    <string name="add">添加</string>
+    <string name="personal_info">个人信息</string>
+    <string name="login_out">退出登录</string>
 </resources>

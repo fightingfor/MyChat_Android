@@ -38,11 +38,11 @@ class ContactListFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
         val addFriendsDialog = AddFriendsDialog(activity!!)
         addFriendsDialog.setOnAddClickListener(object : AddFriendsDialog.OnclickListener {
-            override fun OnAddClick(id: String) {
-                if (isEmpty(id)) {
+            override fun OnAddClick(mobile: String) {
+                if (isEmpty(mobile)) {
                     return
                 }
-                contactListViewModel.addFriend(userid = getUserId(), dstid = id)
+                contactListViewModel.addFriend(userid = getUserId(), mobile = mobile)
                 addFriendsDialog.dismiss()
             }
         })

@@ -32,8 +32,8 @@ class AddFriendsDialog : Dialog {
         window?.attributes = layoutParams
 
         btn_add?.setOnClickListener {
-            val id = et_add?.text.toString()
-            listener?.OnAddClick(id)
+            val mobile = et_add?.text.toString()
+            listener?.OnAddClick(mobile)
         }
     }
 
@@ -43,7 +43,7 @@ class AddFriendsDialog : Dialog {
     }
 
     interface OnclickListener {
-        fun OnAddClick(id: String)
+        fun OnAddClick(mobile: String)
     }
 
 }

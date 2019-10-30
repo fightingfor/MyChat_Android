@@ -10,12 +10,12 @@
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_margin="8dp"
-        android:hint="请输入添加的ID" />
+        android:hint="@string/input_phone" />
 
     <Button
         android:id="@+id/btn_add"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
-        android:text="添加" />
+        android:text="@string/add" />
 </LinearLayout>

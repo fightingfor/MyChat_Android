@@ -20,6 +20,7 @@ fun saveAccount(loginmodel: LoginModel) {
 fun clearAccount() {
     setToken("")
     setUserId("")
+    setNickname("")
 }
 
 fun getToken(): String = SharedPref.getString(SharedPrefKeyManager.KEY_TOKEN, "") ?: ""
