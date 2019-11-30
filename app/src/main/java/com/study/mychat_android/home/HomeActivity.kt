@@ -6,6 +6,7 @@ import androidx.fragment.app.FragmentPagerAdapter
 import com.study.mychat_android.R
 import com.study.mychat_android.chat.ChatListFragment
 import com.study.mychat_android.contact.ContactListFragment
+import com.study.mychat_android.service.ChatServiceManager
 import com.study.mychat_android.view.BaseActivity
 import kotlinx.android.synthetic.main.activity_home.*
 
@@ -23,7 +24,7 @@ class HomeActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
-
+        ChatServiceManager.startService(ChatServiceManager.ACTION_CONNECTION)
         initView()
     }
 
@@ -62,5 +63,7 @@ class HomeActivity : BaseActivity() {
         }
 
     }
+
+
 
 }

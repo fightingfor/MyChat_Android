@@ -8,6 +8,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.study.mychat_android.MainApplication
 import com.study.mychat_android.R
+import com.study.mychat_android.db.ChatMessage
 import com.study.mychat_android.expand.getUserId
 import com.study.mychat_android.model.MessageModel
 
@@ -18,8 +19,8 @@ import com.study.mychat_android.model.MessageModel
  * Description:
  */
 class ChatDetailAdapter : RecyclerView.Adapter<ChatDetailAdapter.ChatHolder>() {
-    private var messageList = arrayListOf<MessageModel>()
-    fun setData(list: ArrayList<MessageModel>) {
+    private var messageList = arrayListOf<ChatMessage>()
+    fun setData(list: ArrayList<ChatMessage>) {
         messageList.clear()
         messageList.addAll(list)
         notifyDataSetChanged()
@@ -62,8 +63,8 @@ class ChatDetailAdapter : RecyclerView.Adapter<ChatDetailAdapter.ChatHolder>() {
             cl_message_target = view.findViewById(R.id.cl_message_target)
         }
 
-        fun fillData(message: MessageModel) {
-            val ownerId = message.ownerId
+        fun fillData(message: ChatMessage) {
+            val ownerId = message.owerId
             if (ownerId == getUserId()) {
                 cl_message_my?.visibility = View.VISIBLE
                 cl_message_target?.visibility = View.GONE
@@ -71,10 +72,10 @@ class ChatDetailAdapter : RecyclerView.Adapter<ChatDetailAdapter.ChatHolder>() {
                 cl_message_my?.visibility = View.GONE
                 cl_message_target?.visibility = View.VISIBLE
             }
-            tv_message_my?.text = message.msg
-            tv_message_target?.text = message.msg
-            tv_name_my?.text = message.ownerName
-            tv_name_target?.text = message.ownerName
+            tv_message_my?.text = message.messageTxt
+            tv_message_target?.text = message.messageTxt
+            tv_name_my?.text = message.owerName
+            tv_name_target?.text = message.targetName
         }
     }
 }

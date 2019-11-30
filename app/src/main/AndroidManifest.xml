@@ -31,6 +31,7 @@
             android:windowSoftInputMode="adjustPan" />
         <activity android:name=".login.LoginActivity" />
         <activity android:name=".MainActivity" />
+        <service android:name="com.study.mychat_android.service.ChatService"/>
     </application>
 
 </manifest>

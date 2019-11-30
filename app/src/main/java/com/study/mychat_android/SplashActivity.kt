@@ -5,6 +5,7 @@ import android.os.Bundle
 import com.study.mychat_android.expand.isTokenValid
 import com.study.mychat_android.home.HomeActivity
 import com.study.mychat_android.login.LoginActivity
+import com.study.mychat_android.service.ChatServiceManager
 import com.study.mychat_android.view.BaseActivity
 
 class SplashActivity : BaseActivity() {
@@ -13,6 +14,7 @@ class SplashActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
         val intent : Intent = if (isTokenValid()){
+            ChatServiceManager.startService(ChatServiceManager.ACTION_CONNECTION)
             Intent(this, HomeActivity::class.java)
         }else{
             Intent(this, LoginActivity::class.java)

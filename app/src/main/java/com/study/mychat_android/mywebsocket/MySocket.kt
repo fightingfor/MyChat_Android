@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModelProviders
 import com.study.mychat_android.chat.detail.ChatDetailViewModel
 import com.study.mychat_android.expand.logger_d
 import com.study.mychat_android.model.MessageModel
+import com.study.mychat_android.service.ChatServiceManager
 import com.study.mychat_android.view.BaseActivity
 import org.java_websocket.client.WebSocketClient
 import org.java_websocket.drafts.Draft
@@ -35,9 +36,11 @@ class MySocket : WebSocketClient {
     }
 
     override fun onMessage(message: String?) {
-        val model = ViewModelProviders.of(mYActivity).get(ChatDetailViewModel::class.java)
-        model.messageData.postValue(MessageModel("", "", "", "", message ?: ""))
+//        val model = ViewModelProviders.of(mYActivity).get(ChatDetailViewModel::class.java)
+//        model.messageData.postValue(MessageModel("", "", "", "", message ?: ""))
         logger_d(TAG, "onMessage>>>$message")
+
+        ChatServiceManager.startService(ChatServiceManager.ACTION_RECEIVE_MESSAGE,message?:"")
 
     }
 

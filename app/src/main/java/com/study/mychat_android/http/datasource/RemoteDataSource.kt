@@ -1,5 +1,9 @@
 package com.study.mychat_android.http.datasource
 
+import androidx.lifecycle.LiveData
+import com.study.mychat_android.MainApplication
+import com.study.mychat_android.db.AppDatabase
+import com.study.mychat_android.db.ChatMessage
 import com.study.mychat_android.expand.getToken
 import com.study.mychat_android.http.*
 import com.study.mychat_android.http.api.ApiService
@@ -80,7 +84,11 @@ class LoginDataSource(baseViewModelEvent: IBaseViewModelEvent) :
 
 class ContactDataSource(baseViewModelEvent: IBaseViewModelEvent) :
     BaseRemoteDataSource(baseViewModelEvent) {
-    fun addFriend(userid: String, mobile: String, callback: RequestMultiplyCallback<ResponseModel>) {
+    fun addFriend(
+        userid: String,
+        mobile: String,
+        callback: RequestMultiplyCallback<ResponseModel>
+    ) {
         val map = mutableMapOf<String, String>()
         map["userid"] = userid
         map["mobile"] = mobile
@@ -101,3 +109,28 @@ class ContactDataSource(baseViewModelEvent: IBaseViewModelEvent) :
         )
     }
 }
+
+class ChatDetailDataSource(baseViewModelEvent: IBaseViewModelEvent) :
+    BaseRemoteDataSource(baseViewModelEvent) {
+
+    fun getAllChatMessage(owerid: Int, targetId: Int) : LiveData<List<ChatMessage>> {
+        val chatMessageDao = AppDatabase.getDababaseInstance().chatMessageDao()
+        var chatMessageList = chatMessageDao.getChatMessageList2(owerid, targetId)
+        val chatMessageList2 = chatMessageDao.getChatMessageList3(owerid, targetId)
+
+        return chatMessageList
+    }
+
+    fun getAllChatMessage2(owerid: Int, targetId: Int) : LiveData<List<ChatMessage>> {
+        val chatMessageDao = AppDatabase.getDababaseInstance().chatMessageDao()
+        val chatMessageList2 = chatMessageDao.getChatMessageList3(owerid, targetId)
+
+        return chatMessageList2
+    }
+
+    fun getAllData():List<ChatMessage>{
+        val chatMessageDao = AppDatabase.getDababaseInstance().chatMessageDao()
+        return chatMessageDao.getAllData()
+    }
+}
+

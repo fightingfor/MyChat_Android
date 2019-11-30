@@ -9,6 +9,7 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
+import com.google.gson.GsonBuilder
 import com.study.mychat_android.MainApplication
 import com.study.mychat_android.R
 import com.study.mychat_android.util.AppEnv
@@ -84,4 +85,11 @@ fun hideSoftInput(activity: Activity) {
 fun showSoftInput(view: View) {
     val imm = view.context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
     imm.showSoftInput(view, InputMethodManager.SHOW_IMPLICIT)
+}
+
+
+fun <T : Any?> parseData(jsonMsg:String, classOfT:Class<T>):T{
+    val gsonBuilder = GsonBuilder().create()
+    val fromJson = gsonBuilder.fromJson(jsonMsg, classOfT)
+    return fromJson
 }
