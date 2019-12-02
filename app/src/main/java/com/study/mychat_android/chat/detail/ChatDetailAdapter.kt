@@ -75,7 +75,7 @@ class ChatDetailAdapter : RecyclerView.Adapter<ChatDetailAdapter.ChatHolder>() {
             tv_message_my?.text = message.messageTxt
             tv_message_target?.text = message.messageTxt
             tv_name_my?.text = message.owerName
-            tv_name_target?.text = message.targetName
+            tv_name_target?.text = message.owerName
         }
     }
 }

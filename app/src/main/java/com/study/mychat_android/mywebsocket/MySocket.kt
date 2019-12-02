@@ -1,10 +1,7 @@
 package com.study.mychat_android.mywebsocket
 
-import android.os.Looper
-import androidx.lifecycle.ViewModelProviders
-import com.study.mychat_android.chat.detail.ChatDetailViewModel
+
 import com.study.mychat_android.expand.logger_d
-import com.study.mychat_android.model.MessageModel
 import com.study.mychat_android.service.ChatServiceManager
 import com.study.mychat_android.view.BaseActivity
 import org.java_websocket.client.WebSocketClient

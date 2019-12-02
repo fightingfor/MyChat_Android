@@ -6,14 +6,10 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.gson.Gson
 import com.study.mychat_android.R
-import com.study.mychat_android.db.AppExecutors
 import com.study.mychat_android.db.ChatMessage
-import com.study.mychat_android.db.MessageDataSource_impl
-import com.study.mychat_android.db.MessageRepository
 import com.study.mychat_android.expand.getNickname
 import com.study.mychat_android.expand.getUserId
 import com.study.mychat_android.expand.isEmpty
-import com.study.mychat_android.http.viewmodel.BaseViewModel
 import com.study.mychat_android.model.UserModel
 import com.study.mychat_android.service.ChatServiceManager
 import com.study.mychat_android.util.MessageType
@@ -34,36 +30,31 @@ class ChatDetailActivity : BaseActivity(), ChatDetailView {
         const val KEY_USER = "key_user"
     }
 
-    private lateinit var chatDetailViewModel: ChatDetailViewModel
+    private var chatDetailViewModel: ChatDetailViewModel? = null
     private var messageList = ArrayList<ChatMessage>()
-    private var ownerId = getUserId()
-    private var ownerName = getNickname()
     private lateinit var targetUser: UserModel
     private var adapter = ChatDetailAdapter()
-    private lateinit var messageRepository: MessageRepository
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_contact_detail)
         targetUser = intent.getParcelableExtra(KEY_USER) as UserModel
         iniView()
-        targetUser.id?.let { chatDetailViewModel.getAllMessage(getUserId().toInt(), targetId = it) }
-        messageRepository =
-            MessageRepository(AppExecutors(), MessageDataSource_impl.getDataSourceInstance())
-        val chatDetailPersent = ChatDetailPersent(messageRepository, this)
-        chatDetailPersent.getChatList(getUserId().toInt(), targetUser.id ?: -1)
+        initData()
     }
 
-    override fun initViewModel(): BaseViewModel? {
+    private fun initData() {
         chatDetailViewModel = getViewModel(ChatDetailViewModel::class.java)
-        chatDetailViewModel.messageData.observe(this, Observer {
-            it?.let {
-                messageList.addAll(it)
-            }
-            adapter.setData(messageList)
-            recycle_contact_detail?.scrollToPosition(adapter.itemCount - 1)
-        })
-        return chatDetailViewModel
+
+        chatDetailViewModel?.getAllMessage(getUserId().toInt(), targetUser.id ?: -1)?.observe(this,
+            Observer {
+                it?.let {
+                    messageList.addAll(it)
+                }
+                adapter.setData(messageList)
+                recycle_contact_detail?.scrollToPosition(adapter.itemCount - 1)
+            })
     }
+
 
     private fun iniView() {
         val linearLayoutManager = LinearLayoutManager(this)

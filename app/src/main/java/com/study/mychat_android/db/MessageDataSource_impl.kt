@@ -1,5 +1,7 @@
 package com.study.mychat_android.db
 
+import androidx.lifecycle.LiveData
+
 /*
  *
  * Author: jinguang
@@ -24,9 +26,13 @@ class MessageDataSource_impl(val dao: ChatMessageDao) : MessageDataSource {
     }
 
 
-
     override fun getChatMessageList(owerId: Int, targetId: Int): List<ChatMessage> {
         return dao.getChatMessageList(owerId, targetId)
+    }
+
+
+    override fun getChatMessageList2(owerId: Int, targetId: Int): LiveData<List<ChatMessage>> {
+        return dao.getChatMessageList2(owerId,targetId)
     }
 
     override fun addChatMessage(message: ChatMessage) {

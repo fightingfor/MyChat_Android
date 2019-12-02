@@ -115,18 +115,11 @@ class ChatDetailDataSource(baseViewModelEvent: IBaseViewModelEvent) :
 
     fun getAllChatMessage(owerid: Int, targetId: Int) : LiveData<List<ChatMessage>> {
         val chatMessageDao = AppDatabase.getDababaseInstance().chatMessageDao()
-        var chatMessageList = chatMessageDao.getChatMessageList2(owerid, targetId)
-        val chatMessageList2 = chatMessageDao.getChatMessageList3(owerid, targetId)
+        val chatMessageList = chatMessageDao.getChatMessageList2(owerid, targetId)
 
         return chatMessageList
     }
 
-    fun getAllChatMessage2(owerid: Int, targetId: Int) : LiveData<List<ChatMessage>> {
-        val chatMessageDao = AppDatabase.getDababaseInstance().chatMessageDao()
-        val chatMessageList2 = chatMessageDao.getChatMessageList3(owerid, targetId)
-
-        return chatMessageList2
-    }
 
     fun getAllData():List<ChatMessage>{
         val chatMessageDao = AppDatabase.getDababaseInstance().chatMessageDao()
